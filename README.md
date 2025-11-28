@@ -29,12 +29,10 @@ For example, if you add an `API_KEY` to your `@fastify/env` schema, you would up
 declare module "fastify" {
   interface FastifyInstance {
     config: {
-      config: {
-        JWT_SECRET_KEY: string;
-        COOKIE_SECRET_KEY: string;
-        DATABASE_URL: string;
-        API_KEY: string; // <-- Add the new variable here
-      };
+      JWT_SECRET_KEY: string;
+      COOKIE_SECRET_KEY: string;
+      DATABASE_URL: string;
+      API_KEY: string; // <-- Add the new variable here
     };
   }
 }
@@ -74,33 +72,13 @@ const allowedOrigins = [
 
 ### Prisma Scripts
 
-`npm run prisma:migrate:dev` or `yarn prisma:migrate:dev` - Creates a new migration file based on changes in `schema.prisma` and applies it.
+`npm run db:generate`- Creates a new migration file based on changes in `schema.prisma` and applies it.
 
-`npm run prisma:generate` or `yarn prisma:generate` - Generates the Prisma Client, allowing you to interact with your database.
-
-`npm run prisma:studio` or `yarn prisma:studio` - Opens the Prisma Studio UI, a powerful tool for viewing and editing your data.
+`npm run db:migrate` - Generates the Prisma Client, allowing you to interact with your database.
 
 ### Hash
 
 The `hash.ts` file provides helper functions for secure password management using `bcrypt`.
-
-- `hashPassword(password: string)`: A function that securely hashes a user's password before storing it in your database.
-
-### Generating the Prisma Client
-
-Anytime you change your `schema.prisma` file, you need to run this command to update the Prisma Client with the new database structure:
-
-### Developing with Prisma
-
-Use this command to create and apply new migrations during development. It will automatically detect changes in your `schema.prisma` and create a migration file, applying it to your local database.
-
-### Prisma Models `(schema.prisma)`
-
-- **`datasource`**: Specifies the database provider. Currently, it's set to `postgresql`.
-
-- **`generator`**: Specifies the client that will be generated. It's set to `prisma-client-js`.
-
-After making any changes in `schema.prisma`, always run `npx prisma generate` to update the Prisma Client and `npx prisma migrate dev` to apply the changes to your database.
 
 ### Module folder structure `(@/modules/)`
 
