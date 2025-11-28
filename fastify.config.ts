@@ -1,9 +1,11 @@
 import fastifyEnv from "@fastify/env";
 import fastifyCookie from "@fastify/cookie";
 import fastifyJwt from "@fastify/jwt";
-import cors from "@fastify/cors";
+import cors, { fastifyCors } from "@fastify/cors";
+import fastifyHelmet from "@fastify/helmet";
+import fastifyRateLimit from "@fastify/rate-limit";
 
-import { server } from "./server";
+import { server } from "./server.js";
 
 export default async function initializeFastifyConfig() {
   /*
@@ -30,6 +32,15 @@ export default async function initializeFastifyConfig() {
   await server.register(fastifyCookie, {
     secret: server.config.COOKIE_SECRET_KEY,
     hook: "preHandler",
+  });
+
+  /*
+    - Configuration for security plugins
+    */
+  await server.register(fastifyHelmet);
+  await server.register(fastifyRateLimit, {
+    max: 100,
+    timeWindow: "1 minute",
   });
 
   /*

@@ -1,7 +1,14 @@
 import Fastify from "fastify";
-import initializeFastifyConfig from "./fastify.config";
+import {
+  validatorCompiler,
+  serializerCompiler,
+} from "fastify-type-provider-zod";
+import initializeFastifyConfig from "./fastify.config.js";
 
 export const server = Fastify();
+
+server.setValidatorCompiler(validatorCompiler);
+server.setSerializerCompiler(serializerCompiler);
 
 async function main() {
   try {

@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import db_client from "./client";
+import db_client from "./client.js";
 
 const SALT_ROUNDS = 10;
 
