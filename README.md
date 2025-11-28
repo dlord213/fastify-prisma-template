@@ -64,11 +64,11 @@ const allowedOrigins = [
 
 ### Development Scripts
 
-`npm run dev` or `yarn dev` - Runs the server in watch mode using `ts-node-dev`, automatically restarting on file changes.
+`npm run dev` - Runs the server in watch mode using `tsx watch`, automatically restarting on file changes.
 
-`npm run start` or `yarn start` - Runs the compiled server from the `dist` folder. Use this for production.
+`npm run start` - Runs the compiled server from the `dist` folder. Use this for production.
 
-`npm run build` or `yarn build` - Compiles the TypeScript source code into JavaScript in the `dist` folder.
+`npm run build` - Compiles the TypeScript source code into JavaScript in the `dist` folder.
 
 ### Prisma Scripts
 
